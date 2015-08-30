@@ -15,6 +15,9 @@
    you a royalty free license to use or 
    modify this software provided this 
    notice appears on all copies. 
+   
+   * Modified by Amine Benabdeljalil to answer
+     the needs of the project
 */
 //
 // One placed to customize - The id value of the table tag.
@@ -54,6 +57,7 @@ else {
 		}
 	}
 var newTableBody = document.createElement("tbody");
+newTableBody.setAttribute("id", "fbody");
 for(var i=0, len=arrayOfRows.length; i<len; i++) {
 	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
 	}

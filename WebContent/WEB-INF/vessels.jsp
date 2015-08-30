@@ -29,6 +29,10 @@
 		var json_backup = json_vessels;
 		var markers = [];
 		var map;
+		var debug;
+		var debug2;
+		var debug3 = [];
+		var debug4 = [];
 		//backup will be used to recover the original json_vessels var for the map filter upgrade
 	</script>
 	
@@ -49,7 +53,7 @@
 				   + '</thead>';
 			table += header;
 			table += '<tbody id='+ '"fbody"'+ '>';
-			for(i=0;i<data.length;i++){
+			for(var i = 0; i < data.length; i++){
 				var row = '<tr>' 
 								+ '<td class="name">' + data[i].name + '</td>'
 								+ '<td>' + data[i].imo + '</td>'
@@ -75,7 +79,7 @@
 			    zoom: 2
 			});
 			//from vessels get all latitudes and longitudes
-			for(i=0;i<data.length;i++){
+			for(var i = 0; i < data.length; i++){
 				var lng  = parseFloat(data[i].longitude);
 				var lat  = parseFloat(data[i].latitude);
 				var name = data[i].name[0];
@@ -105,7 +109,7 @@
 			}
 		}
 		function getMarkerByName(name){
-			for(i = 0; i < markers.length; i++){
+			for(var i = 0; i < markers.length; i++){
 				if(markers[i].getTitle() == name){
 					return markers[i];
 				}				
@@ -127,6 +131,7 @@
 		    var data = this.value.split(" ");
 		    //create a jquery object of the rows
 		    var jo = $("#fbody").find("tr");
+		    
 		    if (this.value == "") {
 		        jo.show();
 		        setMapOnMarkers(map, markers);
@@ -136,7 +141,7 @@
 		    jo.hide();
 		  	//hide all markers
 		    clearMarkers();
-	
+			debug = jo;
 		    //override :contains filter to become case insensitive
 		    jQuery.expr[':'].contains = function(a, i, m) {
 			  return jQuery(a).text().toUpperCase()
@@ -157,8 +162,8 @@
 		    filtered.show();
 		    var temp_markers = [];
 		  	//get from jo the "name" column (first element)
-		    for(i = 0; i < filtered.length; i++){
-		    	var n = jo[i].firstElementChild.innerHTML;
+		    for(var j = 0; j < filtered.length; j++){
+		    	var n = filtered[j].firstElementChild.innerHTML;
 		    	temp_markers.push(getMarkerByName(n));
 		    }
 		    //show the filtered markers on the map
