@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+.vessels{
+	width: 100%;
+}
+#map{
+	height: 500px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h1{
+	vertical-align: middle;
+	margin-bottom: 50px;
+	position: relative;
+}
